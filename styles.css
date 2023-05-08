@@ -1,0 +1,9 @@
+.square {
+  flex: 1 0 auto;
+  aspect-ratio: 1/1;
+  background-color: black;
+}
+
+.square-row {
+  display: flex;
+}

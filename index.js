@@ -4,7 +4,9 @@ const squareContainer = document.getElementById('squareContainer');
 // Get a new, 10% darker random color based off the previous.
 function getRandomPassThroughColor(color) {
   const [r,g,b] = color.match(/[\d.]+/g).map(Number); // Break it up into r, g, b with float support
-  return getRandomColor(r * 0.9 + 1, g * 0.9 + 1, b * 0.9 + 1); // Add 1 for Math.random
+  let maxValue = Math.max(r, g, b) * 0.9 + 1; // Get the highest value to use as the "ceiling", darken it by 10%, and add 1 for Math.random
+  if (maxValue < 26) maxValue = 0; // Should never take more than 10 passes to become black
+  return getRandomColor(maxValue, maxValue, maxValue); // Add 1 for Math.random
 }
 
 function squareHovered() {

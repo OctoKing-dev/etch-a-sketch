@@ -20,5 +20,17 @@ function createNewGrid(size) {
   }
 }
 
+function promptNewGrid() {
+  let newGridSize;
+  do {
+    newGridSize = Number.parseInt(prompt("Please enter new grid size: (1 - 100)"));
+    if (Number.isNaN(newGridSize) || newGridSize < 1 || newGridSize > 100) newGridSize = null;
+  } while (!newGridSize);
+  
+  createNewGrid(newGridSize);
+}
+
+newGridButton.addEventListener('click', promptNewGrid);
+
 // Start with a 16x16 grid.
 createNewGrid(16);

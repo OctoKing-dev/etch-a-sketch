@@ -3,6 +3,20 @@ body {
   padding: 0;
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: cornflowerblue;
+  color: white;
+}
+
+.header-left h1,
+.header-left h2 {
+  margin: 0;
+}
+
 .square {
   flex: 1 0 auto;
   aspect-ratio: 1/1;
@@ -13,6 +27,11 @@ body {
   display: flex;
 }
 
+#newGridButton {
+  padding: 8px 16px;
+}
+
 #squareContainer {
-  max-width: 1200px;
+  max-width: 1000px;
+  margin: 64px auto;
 }

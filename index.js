@@ -1,15 +1,24 @@
 const newGridButton = document.getElementById('newGridButton');
 const squareContainer = document.getElementById('squareContainer');
 
+// Get a new, 10% darker random color based off the previous.
+function getRandomPassThroughColor(color) {
+  const [r,g,b] = color.match(/[\d.]+/g).map(Number); // Break it up into r, g, b with float support
+  return getRandomColor(r * 0.9 + 1, g * 0.9 + 1, b * 0.9 + 1); // Add 1 for Math.random
+}
+
 function squareHovered() {
   // Generate a random color if this is the first time it's been selected.
   if (!this.style.backgroundColor) this.style.backgroundColor = getRandomColor();
+  // Generate a new, darker color on every pass-through.
+  else if (this.style.backgroundColor !== 'rgb(0, 0, 0)') this.style.backgroundColor = getRandomPassThroughColor(this.style.backgroundColor);
 }
 
-function getRandomColor() {
-  let r = Math.floor(Math.random() * 256),
-      g = Math.floor(Math.random() * 256),
-      b = Math.floor(Math.random() * 256);
+// Generate random color with given max values.
+function getRandomColor(maxR, maxG, maxB) {
+  let r = Math.floor(Math.random() * (maxR ?? 256)),
+      g = Math.floor(Math.random() * (maxG ?? 256)),
+      b = Math.floor(Math.random() * (maxB ?? 256));
   return `rgb(${r}, ${g}, ${b})`;
 }
 

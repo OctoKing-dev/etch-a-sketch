@@ -12,3 +12,7 @@ body {
 .square-row {
   display: flex;
 }
+
+#squareContainer {
+  max-width: 1200px;
+}
